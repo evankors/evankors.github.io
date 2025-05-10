@@ -51,25 +51,47 @@
       margin-top: 2em;
       font-size: 1.1em;
       color: #34495e;
+      text-align: center;
+    }
+    #link {
+      margin-top: 1em;
+      font-size: 0.95em;
+    }
+    #link a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    #link a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <h1>羽毛球邀请</h1>
   <p>时间：2025年5月11日 18:30 - 19:30</p>
-  <div>
+  <div id="buttons">
     <button id="accept">爽快接受</button>
     <button id="softAccept">委婉接受</button>
   </div>
   <div id="response"></div>
+  <div id="link"></div>
 
   <script>
     const responseDiv = document.getElementById('response');
+    const linkDiv = document.getElementById('link');
+    const buttonsDiv = document.getElementById('buttons');
+
+    function handleResponse(message) {
+      responseDiv.textContent = message;
+      buttonsDiv.style.display = 'none';
+      linkDiv.innerHTML = '<a href="https://ivs.tjcu.edu.cn/pages/subPack/order/fieldDetail?orderId=CDYD202505100002523292964&orderType=field&onlineOnlyReserve=null" target="_blank">点击查看场地预订详情</a>';
+    }
+
     document.getElementById('accept').addEventListener('click', () => {
-      responseDiv.textContent = '恭喜您接受成功，请合理安排日程，注意防暑。';
+      handleResponse('恭喜您接受成功，请合理安排日程。');
     });
     document.getElementById('softAccept').addEventListener('click', () => {
-      responseDiv.textContent = '注意防暑，记得带拍，不见不散。';
+      handleResponse('注意防暑，记得带拍，不见不散。');
     });
   </script>
 </body>
